@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Price Ticker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">
+                <span class="crypto-icon">
+                    <i class="fab fa-bitcoin"></i>
+                </span>
+                Crypto Ticker
+            </h1>
+            <div class="last-updated" id="lastUpdated">
+                <i class="fas fa-clock"></i>
+                Never updated
+            </div>
+        </header>
+
+        <div class="controls">
+            <div class="currency-toggle">
+                <label for="baseCurrency"><i class="fas fa-globe"></i> Currency</label>
+                <select id="baseCurrency">
+
+                    
+                    <!-- Major Fiat Currencies -->
+                    <option value="usd">USD - US Dollar</option>
+                    <option value="eur">EUR - Euro</option>
+                    <option value="gbp">GBP - British Pound</option>
+                    <option value="jpy">JPY - Japanese Yen</option>
+                    <option value="cny">CNY - Chinese Yuan</option>
+                    <option value="krw">KRW - South Korean Won</option>
+                    <option value="inr">INR - Indian Rupee</option>
+                    <option value="cad">CAD - Canadian Dollar</option>
+                    <option value="aud">AUD - Australian Dollar</option>
+                    <option value="chf">CHF - Swiss Franc</option>
+                    
+                    <!-- Asian Currencies -->
+                    <option value="idr">IDR - Indonesian Rupiah</option>
+                    <option value="twd">TWD - New Taiwan Dollar</option>
+                    <option value="hkd">HKD - Hong Kong Dollar</option>
+                    <option value="sgd">SGD - Singapore Dollar</option>
+                    <option value="thb">THB - Thai Baht</option>
+                    <option value="myr">MYR - Malaysian Ringgit</option>
+                    <option value="php">PHP - Philippine Peso</option>
+                    <option value="vnd">VND - Vietnamese Dong</option>
+                    <option value="mmk">MMK - Burmese Kyat</option>
+                    <option value="lkr">LKR - Sri Lankan Rupee</option>
+                    <option value="bdt">BDT - Bangladeshi Taka</option>
+                    <option value="pkr">PKR - Pakistani Rupee</option>
+                    
+                    <!-- European Currencies -->
+                    <option value="rub">RUB - Russian Ruble</option>
+                    <option value="pln">PLN - Polish Zloty</option>
+                    <option value="czk">CZK - Czech Koruna</option>
+                    <option value="dkk">DKK - Danish Krone</option>
+                    <option value="nok">NOK - Norwegian Krone</option>
+                    <option value="sek">SEK - Swedish Krona</option>
+                    <option value="huf">HUF - Hungarian Forint</option>
+                    <option value="gel">GEL - Georgian Lari</option>
+                    
+                    <!-- Middle Eastern & African Currencies -->
+                    <option value="aed">AED - UAE Dirham</option>
+                    <option value="sar">SAR - Saudi Riyal</option>
+                    <option value="bhd">BHD - Bahraini Dinar</option>
+                    <option value="kwd">KWD - Kuwaiti Dinar</option>
+                    <option value="ils">ILS - Israeli New Shekel</option>
+                    <option value="zar">ZAR - South African Rand</option>
+                    <option value="ngn">NGN - Nigerian Naira</option>
+                    
+                    <!-- American Currencies -->
+                    <option value="ars">ARS - Argentine Peso</option>
+                    <option value="brl">BRL - Brazilian Real</option>
+                    <option value="mxn">MXN - Mexican Peso</option>
+                    <option value="clp">CLP - Chilean Peso</option>
+                    <option value="bmd">BMD - Bermudian Dollar</option>
+                    <option value="nzd">NZD - New Zealand Dollar</option>
+                    
+                    <!-- Special Currencies -->
+                    <option value="try">TRY - Turkish Lira</option>
+                    <option value="uah">UAH - Ukrainian Hryvnia</option>
+                    <option value="vef">VEF - Venezuelan Bolivar</option>
+                    <option value="xdr">XDR - IMF Special Drawing Rights</option>
+                    
+                    <!-- Cryptocurrency Units -->
+                    <option value="btc">BTC - Bitcoin</option>
+                    <option value="eth">ETH - Ethereum</option>
+                    <option value="ltc">LTC - Litecoin</option>
+                    <option value="bch">BCH - Bitcoin Cash</option>
+                    <option value="bnb">BNB - Binance Coin</option>
+                    <option value="eos">EOS - EOS</option>
+                    <option value="xrp">XRP - XRP</option>
+                    <option value="xlm">XLM - Stellar Lumens</option>
+                    <option value="link">LINK - Chainlink</option>
+                    <option value="dot">DOT - Polkadot</option>
+                    <option value="yfi">YFI - Yearn.finance</option>
+                    <option value="sol">SOL - Solana</option>
+                    <option value="bits">BITS - Bits (1/1,000,000 BTC)</option>
+                    <option value="sats">SATS - Satoshis (1/100,000,000 BTC)</option>
+                    
+                    <!-- Commodities -->
+                    <option value="xag">XAG - Silver (Troy Ounce)</option>
+                    <option value="xau">XAU - Gold (Troy Ounce)</option>
+                </select>
+            </div>
+            
+            <div class="coin-selector">
+                <label for="badgeCoin"><i class="fas fa-chart-line"></i> Badge</label>
+                <select id="badgeCoin">
+                    <option value="bitcoin">Bitcoin (BTC)</option>
+                    <option value="ethereum">Ethereum (ETH)</option>
+                    <option value="tether">Tether (USDT)</option>
+                    <option value="binancecoin">BNB (BNB)</option>
+                    <option value="solana">Solana (SOL)</option>
+                    <option value="cardano">Cardano (ADA)</option>
+                    <option value="avalanche-2">Avalanche (AVAX)</option>
+                    <option value="dogecoin">Dogecoin (DOGE)</option>
+                    <option value="polkadot">Polkadot (DOT)</option>
+                    <option value="polygon">Polygon (MATIC)</option>
+                    <option value="chainlink">Chainlink (LINK)</option>
+                    <option value="uniswap">Uniswap (UNI)</option>
+                    <option value="litecoin">Litecoin (LTC)</option>
+                    <option value="bitcoin-cash">Bitcoin Cash (BCH)</option>
+                    <option value="stellar">Stellar (XLM)</option>
+                    <option value="cosmos">Cosmos (ATOM)</option>
+                    <option value="monero">Monero (XMR)</option>
+                    <option value="algorand">Algorand (ALGO)</option>
+                    <option value="vechain">VeChain (VET)</option>
+                    <option value="filecoin">Filecoin (FIL)</option>
+                    <option value="tezos">Tezos (XTZ)</option>
+                    <option value="tron">TRON (TRX)</option>
+                    <option value="eos">EOS (EOS)</option>
+                    <option value="xrp">XRP (XRP)</option>
+                    <option value="yearn-finance">Yearn.finance (YFI)</option>
+                </select>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="refreshBtn" class="refresh-btn">
+                    <span class="refresh-icon"><i class="fas fa-sync-alt"></i></span>
+                    Refresh
+                </button>
+                
+                <button id="openInNewWindow" class="new-tab-btn">
+                    <span class="new-tab-icon"><i class="fas fa-external-link-alt"></i></span>
+                    Open in New Tab
+                </button>
+            </div>
+        </div>
+
+        <div class="price-list" id="priceList">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                Loading prices...
+            </div>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <footer class="footer">
+            <div class="links">
+                <a href="https://github.com/naserhha" target="_blank" rel="noopener">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://x.com/naserhha" target="_blank" rel="noopener">
+                    <i class="fab fa-twitter"></i>
+                    X
+                </a>
+                <a href="https://linkedin.com/in/naserhha" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://mohammadnasser.com" target="_blank" rel="noopener">
+                    <i class="fas fa-globe"></i>
+website                </a>
+            </div>
+            <div class="legal-links">
+                <a href="#" class="legal-link" data-section="privacy">
+                    <i class="fas fa-shield-alt"></i>
+                    Privacy Policy
+                </a>
+                <a href="#" class="legal-link" data-section="terms">
+                    <i class="fas fa-file-contract"></i>
+                    Terms of Service
+                </a>
+                <a href="#" class="legal-link" data-section="license">
+                    <i class="fas fa-balance-scale"></i>
+                    License
+                </a>
+                <a href="#" class="legal-link" data-section="contributing">
+                    <i class="fas fa-hands-helping"></i>
+                    Contributing
+                </a>
+                <a href="#" class="legal-link" data-section="security">
+                    <i class="fas fa-lock"></i>
+                    Security & Privacy
+                </a>
+            </div>
+            <div class="author">
+                <div class="author-main">Made with ❤️ by Mohammad Nasser Haji Hashemabad © 2025</div>
+                <div class="author-title">Blockchain Tools & Smart Contracts Developer</div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
